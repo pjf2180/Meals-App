@@ -6,7 +6,6 @@ export const RestaurantCard = styled(Card)`
   background-color: ${({ theme }) => theme.colors.bg.primary};
 `;
 export const RestaurantList = styled(FlatList)`
-  background-color: blue;
   padding: ${({ theme }) => theme.space[1]};
 `;
 export const CardContent = styled(Card.Content)`
@@ -25,6 +24,11 @@ export const IconsContainer = styled(View)`
   flex: 1;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
+`;
+export const ErrorTextContainer = styled(View)`
+  flex: 1;
+  justify-content: center;
   align-items: center;
 `;
 

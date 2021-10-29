@@ -8,6 +8,7 @@ import open from "../../../../assets/open";
 // components
 import { SpacerView } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
+import { Favorite } from "../../../components/favorites/favorite-restaurant-button";
 //styles
 import {
   CardContent,
@@ -22,13 +23,18 @@ const OpenIcon = () => {
   return <SvgXml key={"open-svg"} xml={open} width={20} height={20} />;
 };
 
-const StarsRating = ({ rating }) => {
+const StarsRating = ({ placeId, rating }) => {
   const starCount = Math.ceil(rating);
   const stars = Array.from(new Array(starCount));
   return (
     <StarContainer>
       {stars.map((_, idx) => (
-        <SvgXml key={idx.toString()} xml={star} width={20} height={20} />
+        <SvgXml
+          key={`star-${placeId}-${idx}`}
+          xml={star}
+          width={20}
+          height={20}
+        />
       ))}
     </StarContainer>
   );
@@ -45,14 +51,16 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
+    placeId,
   } = restaurant;
   return (
-    <RestaurantCard>
-      <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
+    <RestaurantCard elevation={6}>
+      <Card.Cover source={{ uri: photos[0] }} />
+      <Favorite restaurant={restaurant} />
       <CardContent>
         <Text variant={"label"}>{name}</Text>
         <RowSectionContainer>
-          <StarsRating rating={rating} />
+          <StarsRating placeId={placeId} rating={rating} />
           <IconsContainer>
             {isClosedTemporarily && (
               <SpacerView variant={"right.medium"}>
@@ -62,7 +70,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
             <SpacerView variant={"right.medium"}>
               <StyledIcon source={{ uri: icon }} />
             </SpacerView>
-            <OpenIcon />
+            {isOpenNow && <OpenIcon />}
           </IconsContainer>
         </RowSectionContainer>
         <Text>{address}</Text>
