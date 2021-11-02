@@ -7,6 +7,7 @@ import {
 import BackgroundImage from "../../../../assets/home_bg.png";
 import { Button } from "react-native-paper";
 import { SpacerView } from "../../../components/spacer/spacer.component";
+import { colors } from "../../../infrastructure/theme/colors";
 
 export const AccountPage = ({ navigation }) => {
   return (
@@ -15,7 +16,11 @@ export const AccountPage = ({ navigation }) => {
       <AccountContainer>
         <SpacerView variant="bottom.large" />
         <SpacerView variant="bottom.large">
-          <Button mode="contained" onPress={() => navigation.navigate("login")}>
+          <Button
+            mode="contained"
+            color={colors.brand.primary}
+            onPress={() => navigation.navigate("login")}
+          >
             Login
           </Button>
         </SpacerView>
@@ -23,6 +28,7 @@ export const AccountPage = ({ navigation }) => {
 
         <Button
           mode="contained"
+          color={colors.brand.primary}
           onPress={() => navigation.navigate("register")}
         >
           Create Account

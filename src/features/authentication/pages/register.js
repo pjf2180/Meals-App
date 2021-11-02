@@ -4,7 +4,7 @@ import { AppContainer } from "../../../components/container/app-container.compon
 import { AppTextInput } from "../../../components/inputs";
 import { Button } from "react-native-paper";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
-
+import { colors } from "../../../infrastructure/theme/colors";
 export const RegisterPage = ({ navigation }) => {
   const { isLoading, requestRegistration } = useContext(AuthenticationContext);
   const [formState, setFormsState] = useState({
@@ -59,6 +59,7 @@ export const RegisterPage = ({ navigation }) => {
         <Button
           key="register-btn"
           mode="contained"
+          color={colors.brand.primary}
           loading={isLoading}
           disabled={email === "" || password === "" || confirmPassword === ""}
           onPress={handleSubmit}

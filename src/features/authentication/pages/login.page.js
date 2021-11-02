@@ -4,7 +4,7 @@ import { LoginContainer } from "../components/authentication.styles";
 import { AppTextInput } from "../../../components/inputs";
 import { Button } from "react-native-paper";
 import { AppContainer } from "../../../components/container/app-container.component";
-
+import { colors } from "../../../infrastructure/theme/colors";
 export const LoginPage = ({ route }) => {
   const { requestLogin, isLoading } = useContext(AuthenticationContext);
 
@@ -39,6 +39,7 @@ export const LoginPage = ({ route }) => {
         <Button
           key="login-btn"
           loading={isLoading}
+          color={colors.brand.primary}
           mode="contained"
           disabled={email === "" || password === ""}
           onPress={handleLoginRequest}
